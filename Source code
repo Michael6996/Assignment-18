@@ -7,7 +7,7 @@ public class App {
     private int itemQuantity;
 //Class inheritance for class main. Will run it and return these values
     public App() {
-        //App() as it must be named whatever the main class is
+        //App() as it must be named whatever the public class is
         this.itemName = "none";
         this.itemPrice = 0;
         this.itemQuantity = 0;
