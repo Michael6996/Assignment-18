@@ -1,1 +1,85 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class App {
+    private String itemName;
+    private int itemPrice;
+    private int itemQuantity;
+//Class inheritance for class main. Will run it and return these values
+    public App() {
+        //App() as it must be named whatever the main class is
+        this.itemName = "none";
+        this.itemPrice = 0;
+        this.itemQuantity = 0;
+        //this.  
+    }
+
+    public void setName(String itemName) {
+        this.itemName = itemName;
+    }
+//See the this. returns .item...
+    public String getName() {
+        return this.itemName;
+    }
+
+    public void setPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public int getPrice() {
+        return this.itemPrice;
+    }
+
+    public void setQuantity(int itemQuantity) {
+        this.itemQuantity = itemQuantity;
+    }
+
+    public int getQuantity() {
+        return this.itemQuantity;
+    }
+}
+
+
+ class Main {
+    //not a public class main as you can't have two public classes in the same file
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //scanner for user input
+        App app = new App();
+        App app2 = new App();
+        //try loop to catch errors
+        try{
+        System.out.println("Item 1");
+        System.out.println("Enter the item name:");
+        app.setName(scanner.nextLine());
+        System.out.println("Enter the item price:");
+        app.setPrice(scanner.nextInt());
+        System.out.println("Enter the item quantity:");
+        app.setQuantity(scanner.nextInt());
+        //scanner.nextLine is used for more lines
+        scanner.nextLine(); 
+
+        
+        System.out.println("Item 2");
+        System.out.println("Enter the item name:");
+        app2.setName(scanner.nextLine());
+        System.out.println("Enter the item price:");
+        app2.setPrice(scanner.nextInt());
+        System.out.println("Enter the item quantity:");
+        app2.setQuantity(scanner.nextInt());
+
+        System.out.println("TOTAL COST");
+        int item1Cost = app.getPrice() * app.getQuantity();
+        System.out.println(app.getName() + " " + app.getQuantity() + " @ $" + app.getPrice() + " = $" + item1Cost);
+        int item2Cost = app2.getPrice() * app2.getQuantity();
+        System.out.println(app2.getName() + " " + app2.getQuantity() + " @ $" + app2.getPrice() + " = $" + item2Cost);
+        System.out.println("Total: $" + (item1Cost + item2Cost));
+        }catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please try again.");
+            main(args); // retry
+        } finally {
+        scanner.close();
+        }
+    }
+}
 
